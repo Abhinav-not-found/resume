@@ -2,7 +2,7 @@
 
 ## Contact
 
-- Email:
+- Email:abhinavisgreat18@gmail.com
 - GitHub:
 - LinkedIn:
 
