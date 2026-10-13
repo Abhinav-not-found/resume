@@ -1,4 +1,4 @@
-
+```latex
 \documentclass[10pt,a4paper]{article}
 
 % ---------- Layout and packages ----------
@@ -43,16 +43,16 @@
 \begin{center}
   {\LARGE\bfseries $name$}\\[4pt]
   \small
-  \href{mailto:$email$}{$email$}
+  \href{mailto:$email$}{\underline{$email$}}
   \enspace \textbar\enspace
-  \href{$github_url$}{$github_label$}
+  \href{$github_url$}{\underline{$github_label$}}
 $if(linkedin_url)$
   \enspace \textbar\enspace
-  \href{$linkedin_url$}{$linkedin_label$}
+  \href{$linkedin_url$}{\underline{$linkedin_label$}}
 $endif$
 $if(portfolio_url)$
   \enspace \textbar\enspace
-  \href{$portfolio_url$}{$portfolio_label$}
+  \href{$portfolio_url$}{\underline{$portfolio_label$}}
 $endif$
 \end{center}
 
@@ -61,3 +61,4 @@ $endif$
 $body$
 
 \end{document}
+```
