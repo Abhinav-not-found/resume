@@ -1,11 +1,12 @@
-
 ---
-name: Testing Kumar
-email: testingisgreat18@gmail.com
-github_url: https://github.com/Testing-not-found
+name: Abhinav Kumar
+email: abhinavisgreat18@gmail.com
+github_url: https://github.com/Abhinav-not-found
 github_label: GitHub
-linkedin_url: https://www.linkedin.com/
+linkedin_url: https://www.linkedin.com/in/abhinav-kumar-fullstack/
 linkedin_label: LinkedIn
+portfolio_url: https://www.abhinav-kumar.in/
+portfolio_label: Portfolio
 ---
 
 # Professional Summary
@@ -38,8 +39,8 @@ Full Stack Developer focused on building web applications using JavaScript, Reac
 
 # Experience
 
-**Frontend Developer Intern** — *InLighnX*  
-*Jul 2025 – Sep 2025*
+**Frontend Developer Intern** — _InLighnX_  
+_Jul 2025 – Sep 2025_
 
 - Worked on frontend development tasks as part of a remote internship.
 
