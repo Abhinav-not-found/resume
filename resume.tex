@@ -1,14 +1,15 @@
+
 \documentclass[10pt,a4paper]{article}
 
-% ---------- Packages ----------
+% ---------- Layout and packages ----------
 \usepackage[a4paper,top=0.55in,bottom=0.55in,left=0.65in,right=0.65in]{geometry}
 \usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
 \usepackage{lmodern}
 \usepackage{enumitem}
 \usepackage{titlesec}
 \usepackage[hidelinks]{hyperref}
 \usepackage{xcolor}
-\usepackage{tabularx}
 \usepackage{microtype}
 
 % ---------- Formatting ----------
@@ -33,77 +34,23 @@
   parsep=0pt
 }
 
-\newcommand{\resumeProject}[2]{
-  \textbf{#1}\hfill
-  {\small\color{muted}#2}
-}
-
 \begin{document}
 
 % ---------- Header ----------
 \begin{center}
-    {\LARGE\bfseries Abhinav Kumar}\\[4pt]
-    \small
-    \href{mailto:abhinavisgreat18@gmail.com}{abhinavisgreat18@gmail.com}
-    \enspace $|$ \enspace
-    \href{https://github.com/Abhinav-not-found}{GitHub}
-    \enspace $|$ \enspace
-    % Replace this with your actual LinkedIn profile URL.
-    \href{https://www.linkedin.com/}{LinkedIn}
+  {\LARGE\bfseries $name$}\\[4pt]
+  \small
+  \href{mailto:$email$}{$email$}
+  \enspace \textbar\enspace
+  \href{$github_url$}{$github_label$}
+$if(linkedin_url)$
+  \enspace \textbar\enspace
+  \href{$linkedin_url$}{$linkedin_label$}
+$endif$
 \end{center}
 
 \vspace{-6pt}
 
-% ---------- Summary ----------
-\section{Professional Summary}
-Full Stack Developer focused on building web applications using
-JavaScript, React, Next.js, Node.js, Express.js, and MongoDB.
-Experienced in developing REST APIs, authentication flows,
-database-driven features, and responsive user interfaces.
-
-% ---------- Skills ----------
-\section{Technical Skills}
-\textbf{Languages:} JavaScript, HTML, CSS\\
-\textbf{Frontend:} React, Next.js, Tailwind CSS, shadcn/ui\\
-\textbf{Backend:} Node.js, Express.js, REST APIs, JWT Authentication\\
-\textbf{Database:} MongoDB, Mongoose\\
-\textbf{Tools:} Git, GitHub, Vercel
-
-% ---------- Projects ----------
-\section{Projects}
-
-\resumeProject{Hive}{Social Media Application}
-\begin{itemize}
-    \item Built a social platform with user authentication and
-    core social features, including posts, likes, comments, and feeds.
-    \item Developed reusable frontend components and backend APIs
-    to support application workflows.
-\end{itemize}
-
-\resumeProject{InkSpace}{Blogging Platform}
-\begin{itemize}
-    \item Developed a blogging platform for creating, managing,
-    and browsing blog posts.
-    \item Implemented API-driven functionality and database
-    operations using the JavaScript full-stack ecosystem.
-\end{itemize}
-
-% ---------- Experience ----------
-\section{Experience}
-
-\textbf{Frontend Developer Intern}
-\hfill {\small\color{muted}Jul 2025 -- Sep 2025}\\
-InLighnX
-\begin{itemize}
-    \item Worked on frontend development tasks as part of a
-    remote internship.
-\end{itemize}
-
-% ---------- Education ----------
-\section{Education}
-
-\textbf{Lovely Professional University}
-\hfill {\small\color{muted}2020 -- 2024}\\
-B.Tech. in Computer Science and Engineering
+$body$
 
 \end{document}

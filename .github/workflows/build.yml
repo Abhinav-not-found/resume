@@ -1,3 +1,4 @@
+
 name: Build Resume PDF
 
 on:
@@ -5,7 +6,8 @@ on:
     branches:
       - main
     paths:
-      - "resume.tex"
+      - "resume.md"
+      - "template.tex"
       - ".github/workflows/build.yml"
   workflow_dispatch:
 
@@ -22,22 +24,24 @@ jobs:
         with:
           persist-credentials: true
 
-      - name: Install LaTeX
+      - name: Install Pandoc and LaTeX
         run: |
           sudo apt-get update
           sudo apt-get install -y \
+            pandoc \
             texlive-latex-base \
             texlive-latex-recommended \
             texlive-latex-extra \
             texlive-fonts-recommended
 
-      - name: Compile resume
+      - name: Generate PDF from Markdown
         run: |
           mkdir -p pdf
-          pdflatex -interaction=nonstopmode -halt-on-error \
-            -output-directory=pdf resume.tex
-          pdflatex -interaction=nonstopmode -halt-on-error \
-            -output-directory=pdf resume.tex
+          pandoc resume.md \
+            --standalone \
+            --template=template.tex \
+            --pdf-engine=pdflatex \
+            -o pdf/resume.pdf
 
       - name: Commit updated PDF
         run: |
