@@ -39,7 +39,7 @@ jobs:
           mkdir -p pdf
           pandoc resume.md \
             --standalone \
-            --template=template.tex \
+            --template=./template.tex \
             --pdf-engine=pdflatex \
             -o pdf/resume.pdf
 
