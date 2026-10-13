@@ -1,14 +1,16 @@
 name: Build Resume PDF
 
-permissions:
-  contents: write
-
 on:
   push:
     branches:
       - main
     paths:
-      - "resume.md"
+      - "resume.tex"
+      - ".github/workflows/build.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -17,30 +19,34 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
 
-      - name: Install Pandoc
-        uses: pandoc/actions/setup@v1
-
-      - name: Install Typst
+      - name: Install LaTeX
         run: |
-          wget -qO- https://github.com/typst/typst/releases/latest/download/typst-x86_64-unknown-linux-musl.tar.xz | tar -xJ
-          sudo mv typst*/typst /usr/local/bin/
+          sudo apt-get update
+          sudo apt-get install -y \
+            texlive-latex-base \
+            texlive-latex-recommended \
+            texlive-fonts-recommended
 
-      - name: Generate PDF
+      - name: Compile resume
         run: |
           mkdir -p pdf
-          pandoc resume.md -o pdf/resume.pdf --pdf-engine=typst
+          pdflatex -interaction=nonstopmode -halt-on-error \
+            -output-directory=pdf resume.tex
+          pdflatex -interaction=nonstopmode -halt-on-error \
+            -output-directory=pdf resume.tex
 
       - name: Commit updated PDF
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add pdf/resume.pdf
 
-          git diff --cached --quiet || git commit -m "Update generated resume.pdf"
-
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: regenerate resume PDF"
+            git push
+          else
+            echo "PDF is already up to date."
+          fi
